@@ -1,7 +1,22 @@
 import { useEffect, useState } from "react";
-import TodoItem from "./todoItem.js"
+import TodoItem from "./todoItem";
+
+const API_BASE = "http://localhost:8080/todo";
 
 function App() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    GetTodos();
+  }, []);
+
+  const GetTodos = () => {
+    fetch(API_BASE)
+      .then((res) => res.json())
+      .then((data) => setItems(data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="container">
       <div className="heading">
@@ -16,7 +31,10 @@ function App() {
       </div>
 
       <div className="todolist">
-        <TodoItem />
+        {items.map((item) => {
+          const { _id, name } = item;
+          return <TodoItem name={name} id={_id} setItems={setItems} />;
+        })}
       </div>
     </div>
   );
