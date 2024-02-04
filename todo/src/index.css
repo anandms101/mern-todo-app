@@ -48,7 +48,7 @@ body {
   background-color: var(--dark);
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: 3fr 0.3fr;
+  grid-template-columns: 0.2fr 3fr 0.3fr;
   transition: 0.5s;
   cursor: pointer;
 }
