@@ -5,10 +5,15 @@ const API_BASE = "http://localhost:8080/todo";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     GetTodos();
   }, []);
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  }
 
   const GetTodos = () => {
     fetch(API_BASE)
@@ -24,7 +29,7 @@ function App() {
       </div>
 
       <div className="form">
-        <input type="text"></input>
+        <input type="text" value={input} onChange={handleChange}></input>
         <button>
           <span>ADD</span>
         </button>
