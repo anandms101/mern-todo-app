@@ -2,4 +2,4 @@ const mongoose = require('mongoose');
 
 const todoSchema = new mongoose.Schema({name: String});
 
-module.exports = mongoose.model('Todo', todoSchema);
+module.exports = mongoose.model('todo', todoSchema);
